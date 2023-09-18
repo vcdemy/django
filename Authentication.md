@@ -47,12 +47,12 @@ accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
 accounts/reset/done/ [name='password_reset_complete']
 ```
 
-預設的對應的template，都需要放在/registration/底下。如：
+預設對應的template，都需要放在<font color="red">/registration/</font>底下。如：
 "/templates/registration/login.html"
 
-不然，就要使用如下的設定去修改template的位置。
+不然，就要使用類似如下的設定去修改template的位置。
 
-這個意思是說，所有的路徑都要自己一個一個加到URLconf裡面去。
+(這個意思是說，所有的路徑都要自己一個一個加到URLconf裡面去。)
 
 ```python
 urlpatterns = [
@@ -71,4 +71,30 @@ urlpatterns = [
     {{ form }}
     <input type="submit" value="submit">
 </form>
+```
+
+## 存取會員限定的網頁
+
+如果要存取會員限定的網頁，大致上可以使用兩種方法：
+* login_required的decorator (Function Views)
+* LoginRequiredMixin (Class-Based Views)
+
+### @login_required範例
+```python
+from django.contrib.auth.decorators import login_required
+
+
+@login_required(login_url="/accounts/login/")
+def my_view(request):
+    ...
+```
+
+### LoginRequiredMixin範例
+```python
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class MyView(LoginRequiredMixin, View):
+    login_url = "/login/"
+    redirect_field_name = "redirect_to"
 ```
