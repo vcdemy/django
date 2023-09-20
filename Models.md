@@ -3,6 +3,7 @@
 ## 官網文件連結
 * [Models](https://docs.djangoproject.com/en/4.2/topics/db/models/)
 * [Model field reference](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
+* [Making Queries](https://docs.djangoproject.com/en/4.2/topics/db/queries/)
 
 ## 概略說明：
 
