@@ -38,3 +38,6 @@
 * User Authentication
 * Django-Allauth (social login)
 * Deployment
+
+## 相關連結
+* [Deploy a Django App on Render](https://docs.render.com/deploy-django)
